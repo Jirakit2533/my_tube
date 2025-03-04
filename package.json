@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^6.12.2",
     "@hookform/resolvers": "^4.1.2",
+    "@neondatabase/serverless": "0.10.4",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -37,13 +38,21 @@
     "@radix-ui/react-toggle": "^1.1.2",
     "@radix-ui/react-toggle-group": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "add": "^2.0.6",
+    "bucket": "^0.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.0",
     "date-fns": "^4.1.0",
+    "dotenv": "16.4.7",
+    "drizzle-orm": "0.40.0",
     "embla-carousel-react": "^8.5.2",
+    "extras": "^0.17.0",
+    "init": "^0.1.2",
     "input-otp": "^1.4.2",
+    "install": "^0.13.0",
     "lucide-react": "^0.475.0",
+    "mkcert": "^3.2.0",
     "next": "15.1.7",
     "next-themes": "^0.4.4",
     "react": "^19.0.0",
@@ -59,14 +68,16 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "drizzle-kit": "^0.30.5",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
-    "@eslint/eslintrc": "^3"
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "tsx": "4.19.3",
+    "typescript": "^5"
   }
 }
