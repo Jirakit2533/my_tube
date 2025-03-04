@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev:all": "concurrently \"bun run dev:webhook\" \"bun run dev\" ",
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "dev:webhook": "ngrok http 3000",
     "build": "next build",
     "start": "next start",

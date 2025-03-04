@@ -22,7 +22,7 @@ export const HomeNavbar = () => {
           </div>
 
           {/* Search Bar */}
-          <div className="flex justify-center w-full max-w-[720px] z-10">   
+          <div className="flex justify-center w-full max-w z-10">   
             <SearchInput /> 
         </div>
         <div className="flex-shrink-0 items-center gap-4 z-30">
