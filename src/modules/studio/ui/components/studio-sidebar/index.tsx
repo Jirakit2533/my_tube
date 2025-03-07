@@ -1,8 +1,11 @@
-import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
+import { Sidebar, SidebarContent, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 
 import { MainSection } from "./main-section";
 import { Separator } from "@/components/ui/separator";
-import { PersonalSection } from "./personal-section";
+import Link from "next/link";
+import { LogOutIcon } from "lucide-react";
+
+
 
 export const StudioSidebar = () => {
   return (
@@ -10,7 +13,14 @@ export const StudioSidebar = () => {
       <SidebarContent className="bg-background">
         <MainSection />
         <Separator />
-        <PersonalSection />
+        <SidebarMenuItem>
+          <SidebarMenuButton tooltip="Exit stuio" asChild>
+            <Link href="/">
+              <LogOutIcon className="size-5" />
+              <span className="text-sm">Exit studio</span>
+            </Link>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
       </SidebarContent>
     </Sidebar>
   );
