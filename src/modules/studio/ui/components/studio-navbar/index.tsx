@@ -15,7 +15,7 @@ export const StudioNavbar = () => {
             <Link href="/studio">
               <div className="p-4 flex items-center gap-1">
                 <Image src="/logo.svg" alt="Logo" height={32} width={32} />
-                <p className="text-xl font-semibold tracking-tight">Studio</p>
+                <p className="text-xl font-semibold tracking-tight">MyStudio</p>
               </div>  
             </Link>
           </div>
