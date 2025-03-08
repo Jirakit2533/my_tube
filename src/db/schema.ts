@@ -41,13 +41,13 @@ export const videos = pgTable("videos", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-export const videoRelations =  relations(videos, ({ one }) => ({
-  user: one(users, {
-    fields: [videos.userId],
-      references: [users.id],
-  }),
-  category: one(categories, {
-    fields: [videos.categoryId],
-      references: [categories.id],
-  }),
-}));
+// export const videoRelations =  relations(videos, ({ one }) => ({
+//   user: one(users, {
+//     fields: [videos.userId],
+//       references: [users.id],
+//   }),
+//   category: one(categories, {
+//     fields: [videos.categoryId],
+//       references: [categories.id],
+//   }),
+// }));
