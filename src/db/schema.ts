@@ -11,9 +11,9 @@ export const users = pgTable("users", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 }, (t) => [uniqueIndex("clerk_id_idx").on(t.clerkId)]);
 
-export const userRelations = relations(users, ({ many }) => ({
-  videos: many(videos),
-}));
+// export const userRelations = relations(users, ({ many }) => ({
+//   videos: many(videos),
+// }));
 
 export const categories = pgTable("categories", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -34,20 +34,20 @@ export const videos = pgTable("videos", {
   userId: uuid("user_id").references(() => users.id, {
     onDelete: "cascade",
   }).notNull(),
-  categoryId: uuid("catefory_id").references(() => categories.id, {
+  categoryId: uuid("category_id").references(() => categories.id, {
     onDelete: "set null",
   }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-// export const videoRelations =  relations(videos, ({ one }) => ({
-//   user: one(users, {
-//     fields: [videos.userId],
-//       references: [users.id],
-//   }),
-//   category: one(categories, {
-//     fields: [videos.categoryId],
-//       references: [categories.id],
-//   }),
-// }));
+export const videoRelations =  relations(videos, ({ one }) => ({
+  user: one(users, {
+    fields: [videos.userId],
+      references: [users.id],
+  }),
+  category: one(categories, {
+    fields: [videos.categoryId],
+      references: [categories.id],
+  }),
+}));
