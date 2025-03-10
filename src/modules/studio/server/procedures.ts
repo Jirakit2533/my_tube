@@ -4,7 +4,7 @@ import { db } from "@/db";
 import { videos } from "@/db/schema";
 import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
 
-export const studioRuoter = createTRPCRouter({
+export const studioRouter = createTRPCRouter({
   getMany: protectedProcedure
   .input(
     z.object({
