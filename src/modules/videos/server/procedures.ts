@@ -18,6 +18,6 @@ export const videosRouter = createTRPCRouter({
   
     return {
       video: video,
-    }
-  })
+    };
+  }),
 });

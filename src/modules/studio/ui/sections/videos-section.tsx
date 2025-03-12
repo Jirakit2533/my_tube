@@ -32,6 +32,12 @@ export const VideoSectionSuspense = () => {
     getNextPageParam: (lastPage) => lastPage.nextCursor,
  });
  
+// return (
+//   <div>
+//     {JSON.stringify(data)}
+//   </div>
+// )
+
  return (
     <div>
       <div>

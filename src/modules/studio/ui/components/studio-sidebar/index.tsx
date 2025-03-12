@@ -1,11 +1,19 @@
 "use client"
 
-import { Sidebar, SidebarContent, SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
-
 import Link from "next/link";
 import { LogOutIcon, VideoIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { StduioSidebarHeader } from "./studio-sidebar-header";
+import { Separator } from "@/components/ui/separator";
+import { 
+  Sidebar, 
+  SidebarContent, 
+  SidebarGroup, 
+  SidebarMenu, 
+  SidebarMenuButton, 
+  SidebarMenuItem 
+} from "@/components/ui/sidebar";
+
 
 export const StudioSidebar = () => {
   const pathname = usePathname();
@@ -18,12 +26,13 @@ export const StudioSidebar = () => {
             <StduioSidebarHeader />
             <SidebarMenuItem>
               <SidebarMenuButton isActive={pathname === "/studio"} tooltip="Exit stuio" asChild>
-                <Link href="/">
+                <Link href="/studio">
                   <VideoIcon className="size-5" />
                   <span className="text-sm">Content</span>         
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
+            <Separator />
             <SidebarMenuItem>
               <SidebarMenuButton tooltip="Exit stuio" asChild>
                 <Link href="/">

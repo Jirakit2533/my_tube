@@ -2,7 +2,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "debug.javascript.defaultRuntimeExecutable": {
-    "pwa-node": "c:\\users\\jirak\\scoop\\apps\\mise\\current\\mise\\shims\\node.cmd"
+    "pwa-node": "c:\\users\\jirak\\scoop\\apps\\mise\\current\\mise\\shims\\node"
   },
 
 }

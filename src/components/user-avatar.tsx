@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { Avatar } from "@/components/ui/avatar";
-import { AvatarImage } from "@radix-ui/react-avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
 const avatarVariants = cva("", {
@@ -36,5 +35,5 @@ export const UserAvatar = ({
   <Avatar className={cn(avatarVariants({ size, className}))} onClick={onClick}>
     <AvatarImage src={imageUrl} alt={name} />
   </Avatar>
-  )
-}
+  );
+};
