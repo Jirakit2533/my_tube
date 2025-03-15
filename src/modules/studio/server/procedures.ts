@@ -20,6 +20,9 @@ export const studioRouter = createTRPCRouter({
     const { cursor, limit } = input;
     const { id: userId } = ctx.user;
 
+    console.log({db});
+    // Console DataBase 
+
     const data = await db
       .select()
       .from(videos)
@@ -38,7 +41,7 @@ export const studioRouter = createTRPCRouter({
        )).orderBy(desc(videos.updatedAt), desc(videos.id))
         // Add 1 to the limit to check if there is more data
           .limit(limit + 1)
-
+  console.log([data]);
     const hasMore = data.length > limit;
     // Remove the last item if there is more data
     const items = hasMore ? data.slice(0, -1) : data;

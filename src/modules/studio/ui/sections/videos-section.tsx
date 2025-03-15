@@ -31,13 +31,18 @@ export const VideoSectionSuspense = () => {
  }, {
     getNextPageParam: (lastPage) => lastPage.nextCursor,
  });
- 
-// return (
-//   <div>
-//     {JSON.stringify(data)}
-//   </div>
-// )
 
+//   return (
+//     <div>
+//       {JSON.stringify(data)}
+//       <InfiniteScroll 
+//         hasNextPage={query.hasNextPage}
+//         isFetchingNextPage={query.isFetchingNextPage}  
+//         fetchNextPage={query.fetchNextPage}
+//       />
+//     </div>
+//   )
+// };
  return (
     <div>
       <div>
@@ -55,7 +60,7 @@ export const VideoSectionSuspense = () => {
           </TableHeader>
           <TableBody>
             {videos.pages.flatMap((page) => page.items).map((video) => (
-              <Link href={`/studio/videos/${video.id}`} key={video.id}>
+              <Link href={`/studio/videos/${video.id}`} key={video.id} legacyBehavior>
                 <TableRow className="cursor-pointer">
                   <TableCell>
                     {video.title}
@@ -82,7 +87,7 @@ export const VideoSectionSuspense = () => {
               </Link>
             ))}
           </TableBody>
-        </Table>
+        </Table> 
       </div>
       <InfiniteScroll 
         isManual

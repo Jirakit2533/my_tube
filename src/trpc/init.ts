@@ -2,10 +2,10 @@ import { auth } from '@clerk/nextjs/server';
 import { initTRPC, TRPCError } from '@trpc/server';
 import { cache } from 'react';
 import superjson from "superjson"
-import { db } from '..';
 import { eq } from 'drizzle-orm'
 import { users } from '@/db/schema';
 import { ratelimit } from '@/lib/ratelimit';
+import { db } from '@/db';
 
 
 export const createTRPCContext = cache(async () => {

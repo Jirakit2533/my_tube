@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Carousel,
   CarouselApi,
@@ -11,7 +12,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Skeleton } from "./skeleton";
 
 interface FilterCarouselProps {
   value?: string | null;
@@ -48,7 +48,7 @@ export const FilterCarousel = ({
       {/* Left fade */}
       <div 
       className={cn(
-        "absolute left-12 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-white to-transparentpoint-events-none",
+        "absolute left-12 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-white to-transparentpoint-event",
         current === 1 && "hidden"
       )} 
       />  
@@ -68,7 +68,7 @@ export const FilterCarousel = ({
             className="pl-3 basis-auto"
           >
             <Badge
-              variant={value === null ? "default" :"secondary"}
+              variant={!value ? "default" :"secondary"}
               className="rounded-lg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
             >
                All
@@ -91,8 +91,8 @@ export const FilterCarousel = ({
               onClick={() => onSelect(item.value)}
             >
               <Badge 
-                variant={value === item.value? "default" : "secondary"}
-                className="rounded-lg"
+                variant={value === item.value ? "default" : "secondary"}
+                className="rounded-lg px-3 py-1 cursur-pointer whitespace-nowrap text-sm"
               >
                 {item.label}
               </Badge>

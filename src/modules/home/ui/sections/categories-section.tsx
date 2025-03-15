@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { ErrorBoundary } from "react-error-boundary";
 
 import { Suspense } from "react";
-import { FilterCarousel } from "@/components/ui/filter-carousel";
+import { FilterCarousel } from "@/components/filter-carousel";
 
 interface CategoriesSectionProps {
   categoryId?: string;
@@ -14,7 +14,7 @@ interface CategoriesSectionProps {
 export const CategoriesSection = ({ categoryId }: CategoriesSectionProps) => {
   return (
     <Suspense fallback={<CategoriesSkeleton />}>
-      <ErrorBoundary FallbackComponent={() => <p>Error...</p>}>
+      <ErrorBoundary fallback={<p>Error...</p>}>
         <CategoriesSectionSuspense categoryId={categoryId} />
       </ErrorBoundary>
     </Suspense>
