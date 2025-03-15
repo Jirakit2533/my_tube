@@ -25,7 +25,7 @@ export const HomeNavbar = () => {
           <div className="flex justify-center w-full max-w z-10">   
             <SearchInput /> 
         </div>
-        <div className="flex-shrink-0 items-center gap-4 z-30">
+        <div className="flex justify-between items-center gap-4 z-30 ">
           {/* Add header icons as needed */}
           <AuthButton />     
         </div>
