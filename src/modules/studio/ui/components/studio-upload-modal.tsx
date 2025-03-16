@@ -6,6 +6,7 @@ import { Loader2Icon, PlusIcon } from "lucide-react"
 import { trpc } from "@/trpc/client"
 import { Button } from "@/components/ui/button"
 import { ResponsiveModal } from "@/components/responsive-dialog"
+
 import { StudioUploader } from "./studio-uploader"
 
 export const StudioUploadModal = () => {
@@ -27,7 +28,7 @@ export const StudioUploadModal = () => {
         onOpenChange={() => create.reset()}
       >
         {create.data?.url 
-          ? <StudioUploader endpoint={create.data?.url} onSuccess={() => {}} /> 
+          ? <StudioUploader endpoint={create.data.url} onSuccess={() => {}} /> 
           : <Loader2Icon />
         }
       </ResponsiveModal>

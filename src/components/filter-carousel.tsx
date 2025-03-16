@@ -92,7 +92,7 @@ export const FilterCarousel = ({
             >
               <Badge 
                 variant={value === item.value ? "default" : "secondary"}
-                className="rounded-lg px-3 py-1 cursur-pointer whitespace-nowrap text-sm"
+                className="rounded-lg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
               >
                 {item.label}
               </Badge>

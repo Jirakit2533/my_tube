@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { videos } from "@/db/schema";
 import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
-import { mux } from './../../../lib/mux';
+import { mux } from '@/lib/mux';
 
 
 export const videosRouter = createTRPCRouter({
@@ -12,16 +12,20 @@ export const videosRouter = createTRPCRouter({
       new_asset_settings: {
         passthrough: userId,
         playback_policy: ["public"],
-        mp4_support: "standard",
       },
       cors_origin: "*", //TODO: In production, set to url
     });
+
+    console.log({upload});
+    console.log({url: upload.url});
 
     const [video] =  await db
     .insert(videos)
     .values({
       userId,
       title: "Untitled",
+      muxStatus: "waiting",
+      muxUploadId: upload.id,
     })
     .returning();
   
