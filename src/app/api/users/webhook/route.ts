@@ -2,6 +2,7 @@ import { Webhook } from 'svix'
 import { eq } from 'drizzle-orm'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
+
 import { db } from '@/db/index'
 import { users } from '@/db/schema'
 
@@ -60,7 +61,8 @@ export async function POST(req: Request) {
       name: `${data.first_name} ${data.last_name}`,
       imageUrl: data.image_url,
     })
-  } else if (eventType === "user.deleted") {
+  } 
+  if (eventType === "user.deleted") {
     const { data } = evt;
 
     if (!data.id) {
@@ -68,17 +70,21 @@ export async function POST(req: Request) {
     }
 
     await db.delete(users).where(eq(users.clerkId, data.id));
-    return null;
-  } else if (eventType === "user.updated") {
+    // return null;
+  }  
+  // } else 
+  if (eventType === "user.updated") {
     const { data } = evt;
 
     await db
     .update(users)
     .set({
       name: `${data.first_name} ${data.last_name}`,
+      imageUrl: data.image_url,
     })
+    .where(eq(users.clerkId, data.id))
 
-    return null;
+    // return null;
   }
   return new Response('Webhook received', { status: 200 })
 }

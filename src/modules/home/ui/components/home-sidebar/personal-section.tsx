@@ -58,5 +58,5 @@ export const PersonalSection = () => {
         </SidebarMenu>
       </SidebarGroupContent>  
     </SidebarGroup>
-  )
-}
+  );
+};

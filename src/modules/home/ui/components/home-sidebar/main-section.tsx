@@ -38,7 +38,7 @@ export const MainSection = () => {
               tooltip={item.title}
               asChild
               isActive={false} // TODO: CHange to look at current pathname
-              onClick={ (e) => {
+              onClick={(e) => {
                 if (!isSignedIn && item.auth) {
                   e.preventDefault();
                   return clerk.openSignIn();

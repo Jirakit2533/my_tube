@@ -5,7 +5,7 @@ import superjson from "superjson"
 import { eq } from 'drizzle-orm'
 import { users } from '@/db/schema';
 import { ratelimit } from '@/lib/ratelimit';
-import { db } from '@/db';
+import { db } from '..';
 
 
 export const createTRPCContext = cache(async () => {
@@ -36,7 +36,7 @@ export const protectedProcedure = t.procedure.use(async function isAuthed(opts) 
   const { ctx } = opts;
 
   if (!ctx.clerkUserId) {
-    throw new TRPCError({ code: "UNAUTHORIZED",});
+    throw new TRPCError({ code: "UNAUTHORIZED"});
   }
   
   const [user] = await db
@@ -62,3 +62,4 @@ export const protectedProcedure = t.procedure.use(async function isAuthed(opts) 
     },
   });
 });
+
