@@ -33,6 +33,7 @@ export const POST = async (request: Request) => {
 
   const payload = await request.json();
   const body = JSON.stringify(payload);
+
   mux.webhooks.verifySignature(
     body,
     {

@@ -31,19 +31,10 @@ export const VideoSectionSuspense = () => {
  }, {
     getNextPageParam: (lastPage) => lastPage.nextCursor,
  });
+  console.log(trpc.studio);
+  
 
-//   return (
-//     <div>
-//       {JSON.stringify(data)}
-//       <InfiniteScroll 
-//         hasNextPage={query.hasNextPage}
-//         isFetchingNextPage={query.isFetchingNextPage}  
-//         fetchNextPage={query.fetchNextPage}
-//       />
-//     </div>
-//   )
-// };
- return (
+  return (
     <div>
       <div>
         <Table>
@@ -60,7 +51,7 @@ export const VideoSectionSuspense = () => {
           </TableHeader>
           <TableBody>
             {videos.pages.flatMap((page) => page.items).map((video) => (
-              <Link href={`/studio/videos/${video.id}`} key={video.id} legacyBehavior>
+              <Link href={`/studio/videos${video.id}`} key={video.id} legacyBehavior>
                 <TableRow className="cursor-pointer">
                   <TableCell>
                     {video.title}
@@ -69,32 +60,31 @@ export const VideoSectionSuspense = () => {
                     Visibility
                   </TableCell>
                   <TableCell>
-                    status
+                    Status
                   </TableCell>
                   <TableCell>
-                    date
+                    Date
                   </TableCell>
                   <TableCell>
-                    views
+                    Views
                   </TableCell>
                   <TableCell>
-                    comments
+                    Comments
                   </TableCell>
                   <TableCell>
-                    likes
+                    Likes
                   </TableCell>
                 </TableRow>
               </Link>
             ))}
           </TableBody>
-        </Table> 
+        </Table>
       </div>
       <InfiniteScroll 
         isManual
         hasNextPage={query.hasNextPage}
         isFetchingNextPage={query.isFetchingNextPage}
         fetchNextPage={query.fetchNextPage}
-
       />
     </div>
   );

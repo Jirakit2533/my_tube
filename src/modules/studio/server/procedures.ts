@@ -1,8 +1,10 @@
 import { z } from"zod";
 import { eq, and, or, lt, desc } from "drizzle-orm";
+
+import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
 import { db } from "@/db";
 import { videos } from "@/db/schema";
-import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
+
 
 export const studioRouter = createTRPCRouter({
   getMany: protectedProcedure
@@ -10,11 +12,11 @@ export const studioRouter = createTRPCRouter({
     z.object({
       cursor: z.object({
         id: z.string().uuid(),
-        updateAt: z.date(),
+        updatedAt: z.date(),
       })
       .nullish(),
       limit: z.number().min(1).max(100),
-    })
+    }),
   )
   .query(async ({ ctx, input }) => {
     const { cursor, limit } = input;
@@ -28,9 +30,9 @@ export const studioRouter = createTRPCRouter({
           eq(videos.userId, userId),
           cursor 
             ? or(
-                lt(videos.updatedAt, cursor.updateAt),
+                lt(videos.updatedAt, cursor.updatedAt),
                   and(
-                    eq(videos.updatedAt, cursor.updateAt),
+                    eq(videos.updatedAt, cursor.updatedAt),
                     lt(videos.id, cursor.id)
                   )
                 )
@@ -48,7 +50,7 @@ export const studioRouter = createTRPCRouter({
     const nextCursor = hasMore 
     ? {
       id: lastItem.id,
-      updateAt: lastItem.updatedAt,
+      updatedAt: lastItem.updatedAt,
     }
     : null;
 

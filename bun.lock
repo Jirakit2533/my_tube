@@ -9,7 +9,7 @@
         "@clerk/nextjs": "^6.10.3",
         "@hookform/resolvers": "^4.1.2",
         "@mux/mux-node": "9.0.1",
-        "@mux/mux-uploader-react": "^1.1.2",
+        "@mux/mux-uploader-react": "1.1.1",
         "@neondatabase/serverless": "0.10.4",
         "@radix-ui/react-accordion": "^1.2.3",
         "@radix-ui/react-alert-dialog": "^1.1.6",
@@ -253,9 +253,9 @@
 
     "@mux/mux-node": ["@mux/mux-node@9.0.1", "", { "dependencies": { "@types/node": "^18.11.18", "@types/node-fetch": "^2.6.4", "abort-controller": "^3.0.0", "agentkeepalive": "^4.2.1", "form-data-encoder": "1.7.2", "formdata-node": "^4.3.2", "jose": "^4.14.4", "node-fetch": "^2.6.7" } }, "sha512-+wSqwCkb3/RplJkhd35R44+Ov1pQTzXDJSCLF8yxBRodUL2uqG/ajCSix+miIiPNY+v/tx0rJ9+t6dxe2ZR/Dg=="],
 
-    "@mux/mux-uploader": ["@mux/mux-uploader@1.1.2", "", { "dependencies": { "@mux/upchunk": "^3.4.0" } }, "sha512-WbByb/67TNCC2eNS/a4j9SUJOffvp2fy+fwoj32nWZQyYSujNDg5l10+Ez2O4qoR8BywpfQSo2traskCBfEnNA=="],
+    "@mux/mux-uploader": ["@mux/mux-uploader@1.1.1", "", { "dependencies": { "@mux/upchunk": "^3.4.0" } }, "sha512-8V12aG5OpozKZR9iuKbfy6F+5qEu4T3UZcBbTeQzl2IyLQ4Tn3gwyYRaPvrvM+cGjjdLGLbtrw82eZqw0zG/nA=="],
 
-    "@mux/mux-uploader-react": ["@mux/mux-uploader-react@1.1.2", "", { "dependencies": { "@mux/mux-uploader": "1.1.2", "prop-types": "^15.7.2" }, "peerDependencies": { "@types/react": "^17.0.0 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react": "^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react-dom": "^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0" }, "optionalPeers": ["@types/react"] }, "sha512-aAbWSiQ5/TraUOQ2ZruyJgpLhjJqgQgBy6yZTLjLXs887M1vvJsgP/oEd5bmer0hCQw+j4sj+SMZpiNd8PN1qQ=="],
+    "@mux/mux-uploader-react": ["@mux/mux-uploader-react@1.1.1", "", { "dependencies": { "@mux/mux-uploader": "1.1.1", "prop-types": "^15.7.2" }, "peerDependencies": { "@types/react": "^17.0.0 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react": "^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react-dom": "^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0" }, "optionalPeers": ["@types/react"] }, "sha512-MPZnH2kesU9tV4i/fYYmP0ITEDd8Ov6v9S3AuoKtIDiY1L4kZ8IZMCdm+5t8c78FUJjDc5X8kAZR6b2xPuCWAg=="],
 
     "@mux/upchunk": ["@mux/upchunk@3.5.0", "", { "dependencies": { "event-target-shim": "^6.0.2", "xhr": "^2.6.0" } }, "sha512-D+TtvlujlZQjh5I+vFzJ31h5E1uVpEaLdR8M3BNaCFbVLnFMZs8J/L/fYSUyVGnyHT/yDtPHn/IHKdo3G6oSjA=="],
 

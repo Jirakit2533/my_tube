@@ -31,7 +31,7 @@ export const videos = pgTable("videos", {
   id: uuid("id").primaryKey().defaultRandom(),
   title: text("title").notNull(),
   description: text("description"),
-  muxStatus: text("muxStatus"),
+  muxStatus: text("mux_status"),
   muxAssetId: text("mux_asset_id").unique(),
   muxUploadId: text("mux_upload_id").unique(),
   muxPlaybackId: text("mux_playback_it").unique(),
@@ -50,10 +50,10 @@ export const videos = pgTable("videos", {
 export const videoRelations =  relations(videos, ({ one }) => ({
   user: one(users, {
     fields: [videos.userId],
-      references: [users.id],
+    references: [users.id],
   }),
   category: one(categories, {
     fields: [videos.categoryId],
-      references: [categories.id],
+    references: [categories.id],
   }),
 }));

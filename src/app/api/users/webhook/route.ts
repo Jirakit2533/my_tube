@@ -70,7 +70,6 @@ export async function POST(req: Request) {
     }
 
     await db.delete(users).where(eq(users.clerkId, data.id));
-    // return null;
   }  
   // } else 
   if (eventType === "user.updated") {
@@ -84,7 +83,6 @@ export async function POST(req: Request) {
     })
     .where(eq(users.clerkId, data.id))
 
-    // return null;
   }
   return new Response('Webhook received', { status: 200 })
 }

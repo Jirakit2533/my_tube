@@ -16,8 +16,10 @@ export const StudioUploader = ({
 }: StudioUploaderProps) => {
   return (
     <div>
-      <MuxUploader endpoint={endpoint}/>
+      <MuxUploader 
+        endpoint={endpoint}
+        // className="hidden group/uploader"
+      />
     </div>
   );
 };
-
