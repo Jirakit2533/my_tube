@@ -4,7 +4,8 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { trpc } from "@/trpc/client";
 import { ErrorBoundary } from "react-error-boundary";
-import { InfiniteScroll } from "@/components/infinite-scroll";
+import { InfiniteScroll } from "@/components/infinite-scroll"; // Ensure this import is correct
+import { VideoThumbnail } from "@/modules/videos/ui/video-thumbnail";
 import { DEFAULT_LIMIT } from "@/constants";
 import {
   Table,
@@ -26,13 +27,11 @@ export const VideosSection = () => {
 };
 
 export const VideoSectionSuspense = () => {
- const [videos, query] = trpc.studio.getMany.useSuspenseInfiniteQuery({
+ const [videos, query] = trpc.studio.getMany.useSuspenseQuery({
   limit: DEFAULT_LIMIT,
  }, {
     getNextPageParam: (lastPage) => lastPage.nextCursor,
  });
-  console.log(trpc.studio);
-  
 
   return (
     <div>
@@ -50,11 +49,27 @@ export const VideoSectionSuspense = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {videos.pages.flatMap((page) => page.items).map((video) => (
+            {/* {videos.pages.map((page) => page.items.map((video) => ( */}
+            {videos.items.map((video) => (
               <Link href={`/studio/videos${video.id}`} key={video.id} legacyBehavior>
                 <TableRow className="cursor-pointer">
                   <TableCell>
-                    {video.title}
+                    <div className="flex items-center gap-4">
+                      <div className="relative aspect-video w-36 shrink-0">
+                        <VideoThumbnail 
+                        imageUrl={video.thumbnailUrl}
+                        previewUrl={video.previewUrl}
+                        title={video.title}
+                        duration={video.duration || 0}
+                      />
+                      </div>
+                      <div className="flex flex-col overflow-hidden gap-y-1"> 
+                        <span className="text-sm line-clamp-1">{video.title}</span>
+                        <span className="text-xs text-muted-forground line-clamp-1">
+                          {video.description || "No description"}
+                        </span>                        
+                      </div>
+                    </div>
                   </TableCell>
                   <TableCell>
                     Visibility

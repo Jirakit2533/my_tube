@@ -11,7 +11,7 @@ interface InfiniteScrollProps {
 }
 
 export const InfiniteScroll = ({
-  isManual = false,
+  isManual = true,
   hasNextPage,
   isFetchingNextPage,
   fetchNextPage,
