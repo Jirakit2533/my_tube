@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Suspense, useState } from "react";
 import { useForm } from "react-hook-form";
-import { ErrorBoundary } from "react-error-boundary";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ErrorBoundary } from "react-error-boundary";
+import { Suspense, useState } from "react";
 import { CopyCheckIcon, CopyIcon, Globe2Icon, LockIcon, MoreVerticalIcon, TrashIcon } from "lucide-react";
 
 import { trpc } from "@/trpc/client";
@@ -57,6 +58,7 @@ const FormSectionSkeleton = () => {
 }
 
 const FormSectionSuspence = ({ videoId }: FromSectionProps) => {
+  const router = useRouter();
   const utils = trpc.useUtils();
   const [video] = trpc.studio.getOne.useSuspenseQuery({ id: videoId });
   const [categories] = trpc.categories.getMany.useSuspenseQuery();
@@ -66,6 +68,17 @@ const FormSectionSuspence = ({ videoId }: FromSectionProps) => {
       utils.studio.getMany.invalidate();
       utils.studio.getOne.invalidate({ id:videoId});
       toast.success("Video updated");
+    },
+    onError: () => {
+      toast.error("Something went wrong");
+    },
+  });
+
+  const remove = trpc.videos.remove.useMutation({
+    onSuccess: () => {
+      utils.studio.getMany.invalidate();
+      toast.success("Video removed");
+      router.push("/studio");
     },
     onError: () => {
       toast.error("Something went wrong");
@@ -113,7 +126,7 @@ const FormSectionSuspence = ({ videoId }: FromSectionProps) => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={() => remove.mutate({ id: videoId })}>
                   <TrashIcon className="size-4 mr-2" />
                   Delete
                 </DropdownMenuItem>
