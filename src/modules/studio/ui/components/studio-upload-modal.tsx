@@ -5,7 +5,7 @@ import { Loader2Icon, PlusIcon } from "lucide-react"
 
 import { trpc } from "@/trpc/client"
 import { Button } from "@/components/ui/button"
-import { ResponsiveModal } from "@/components/responsive-dialog"
+import { ResponsiveModal } from "@/components/responsive-modal"
 
 import { StudioUploader } from "./studio-uploader"
 import { useRouter } from "next/navigation"
