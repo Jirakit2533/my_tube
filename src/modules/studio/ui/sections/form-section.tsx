@@ -212,13 +212,13 @@ const FormSectionSuspence = ({ videoId }: FromSectionProps) => {
                             <Button
                               type="button"
                               size="icon"
-                              className=" absolute top-1 right-1 rounded-full opacity-100 md:opacity-0 group-hover:opacity-100 duration-300 size-7"
+                              className="bg-black/50 hover:bg-black/100 absolute top-1 right-1 rounded-full opacity-100 md:opacity-0 group-hover:opacity-100 duration-300 size-7"
                             >
                               <MoreVerticalIcon className="text-white" />
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="start" side="right">
-                            <DropdownMenuItem onClick={() => setThumbnailModalOpen(true)}>
+                            <DropdownMenuItem onClick={() => setThumbnailModalOpen(true)} >
                               <ImagePlusIcon className="size-4 mr-1" />
                               Change
                             </DropdownMenuItem>
@@ -363,7 +363,6 @@ const FormSectionSuspence = ({ videoId }: FromSectionProps) => {
                   </FormItem>
                 )}
               />
-            
             </div>
           </div>
         </form>
