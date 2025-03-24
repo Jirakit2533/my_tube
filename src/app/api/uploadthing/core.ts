@@ -55,7 +55,6 @@ export const ourFileRouter = {
             eq(videos.userId, user.id),
           ))
       }
-      
 
       return { user, ...input };
     })
@@ -63,6 +62,7 @@ export const ourFileRouter = {
       await db
         .update(videos)
         .set({
+          // thumbnailUrl: file.ufsUrl,   // Use ufsUrl for Uploadthing v.9 the in future
           thumbnailUrl: file.url,
           thumbnailKey: file.key,
         })
