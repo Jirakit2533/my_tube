@@ -4,7 +4,7 @@ import { mux } from '@/lib/mux';
 import { UTApi } from "uploadthing/server";
 import { and, eq, getTableColumns } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
-import { users, videos, videoUpdateSchema } from "@/db/schema";
+import { users, videos, videoUpdateSchema, videoViews } from "@/db/schema";
 import { baseProcedure, createTRPCRouter, protectedProcedure } from "@/trpc/init";
 
 export const videosRouter = createTRPCRouter({
@@ -17,6 +17,7 @@ export const videosRouter = createTRPCRouter({
           user: {
             ...getTableColumns(users),
           },
+          viewCount: db.$count(videoViews, eq(videoViews.videoId, videos.id))
         })
         .from(videos)
         .innerJoin(users, eq(videos.userId, users.id))
