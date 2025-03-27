@@ -126,7 +126,7 @@ export const videoRelations =  relations(videos, ({ one, many }) => ({
 export const comments = pgTable("comments", {
   id: uuid("id").primaryKey().defaultRandom(),
   userId: uuid("user_id").references(() => users.id, { onDelete: "cascade" }).notNull(),
-  videoId: uuid( "video_id").references(() => users.id, { onDelete: "cascade" }).notNull(),
+  videoId: uuid( "video_id").references(() => videos.id, { onDelete: "cascade" }).notNull(),
   value: text("value").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
@@ -154,7 +154,7 @@ export const videoViews = pgTable("video_views", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 }, (t) => [
   primaryKey({
-    name: "cideo_views_pk",
+    name: "video_views_pk",
     columns: [t.userId, t.videoId],
   }),
 ]);
@@ -184,7 +184,7 @@ export const videoReactions = pgTable("video_reactions", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 }, (t) => [
   primaryKey({
-    name: "video_views_pk",
+    name: "video_reactions_pk",
     columns: [t.userId, t.videoId],
   }),
 ]);

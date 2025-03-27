@@ -4,5 +4,8 @@
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "debug.javascript.defaultRuntimeExecutable": {
       "pwa-node": "c:\\users\\jirak\\scoop\\apps\\mise\\current\\mise\\shims\\node"
-    }
+    },
+    "diffEditor.renderSideBySide": true,
+    "editor.fontSize": 16,
+    "editor.fontFamily": "Menlo"
   }

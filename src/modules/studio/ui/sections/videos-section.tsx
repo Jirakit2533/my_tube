@@ -109,7 +109,7 @@ const VideosSectionSuspense = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {videos.pages.flatMap((page) => page.items.map((video) => (
+            {videos.pages.flatMap((page) => page.items).map((video) => (
                 <Link href={`/studio/videos/${video.id}`} key={video.id} legacyBehavior>
                   <TableRow className="cursor-pointer">
                     <TableCell className="pl-6">
@@ -159,7 +159,7 @@ const VideosSectionSuspense = () => {
                     </TableCell>
                   </TableRow>
                 </Link>
-              ))
+              )
             )}
           </TableBody>
         </Table>

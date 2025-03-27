@@ -11,10 +11,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bunstack/hook-form-react": "^1.0.77",
     "@clerk/clerk-react": "^5.24.2",
     "@clerk/clerk-sdk-node": "^5.1.6",
     "@clerk/nextjs": "^6.10.3",
-    "@hookform/resolvers": "^4.1.2",
+    "@hookform/resolvers": "^4.1.3",
     "@mux/mux-node": "9.0.1",
     "@mux/mux-player-react": "^3.3.0",
     "@mux/mux-uploader-react": "1.1.1",

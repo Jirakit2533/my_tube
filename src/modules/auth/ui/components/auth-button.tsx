@@ -15,14 +15,14 @@ export const AuthButton = () => {
   return (
     <>
       <SignedIn>
-      {!isStudioPage && (
+      {/* {!isStudioPage && (
           <Button asChild variant="secondary">
             <Link href="/studio">
               <ClapperboardIcon />
               Studio
             </Link>
           </Button>
-        )}
+        )} */}
         <UserButton>
           <UserButton.MenuItems>
             {/* TODO: Add user profile menu button */}
