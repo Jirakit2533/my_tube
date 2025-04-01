@@ -10,7 +10,17 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorBoundary } from "react-error-boundary";
 import { Suspense, useState } from "react";
-import { CopyCheckIcon, CopyIcon, Globe2Icon, ImagePlusIcon, LockIcon, MoreVerticalIcon, RotateCcwIcon, SparklesIcon, TrashIcon } from "lucide-react";
+
+import { CopyCheckIcon, 
+  CopyIcon, 
+  Globe2Icon, 
+  ImagePlusIcon, 
+  LockIcon, 
+  MoreVerticalIcon, 
+  RotateCcwIcon, 
+  SparklesIcon, 
+  TrashIcon 
+} from "lucide-react";
 
 import { trpc } from "@/trpc/client";
 import { Input } from "@/components/ui/input";
@@ -24,6 +34,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import {
   Form,
   FormControl,
@@ -32,6 +43,7 @@ import {
   FormMessage,
   FormItem,
 } from "@/components/ui/form";
+
 import { 
   Select,
   SelectContent,
@@ -39,10 +51,12 @@ import {
   SelectTrigger,
   SelectValue,
  } from "@/components/ui/select";
+
   import { VideoPlayer } from "@/modules/videos/ui/components/video-player";
 
   import { THUMBNAIL_FALLBACK } from "@/modules/videos/constants";
   import { ThumbnailUploadModal } from "../components/thumbnail-upload-modal";
+import { APP_URL } from "@/constants";
 
 
 
@@ -95,6 +109,17 @@ const FormSectionSuspence = ({ videoId }: FromSectionProps) => {
     },
   });
 
+  const revalidate = trpc.videos.revalidate.useMutation({
+    onSuccess: () => {
+      utils.studio.getMany.invalidate();
+      utils.studio.getOne.invalidate({ id: videoId });
+      toast.success("Video revalidated");
+    },
+    onError: () => {
+      toast.error("Something went wrong");
+    },
+  });
+
   const restoreThumbnail = trpc.videos.restoreThumbnail.useMutation({
     onSuccess: () => {
       utils.studio.getMany.invalidate();
@@ -116,7 +141,7 @@ const FormSectionSuspence = ({ videoId }: FromSectionProps) => {
   };
 
   // TODO: Change if deploying outsied of VERCEL
-  const fullUrl = `${process.env.VERCEL_URL || "http://localhost:3000"}/videos/${videoId}`;
+  const fullUrl = `${APP_URL || "http://localhost:3000"}/videos/${videoId}`;
   const [isCopied, setIsCopied] = useState(false);
 
   const onCopy = async () => {
@@ -153,6 +178,10 @@ const FormSectionSuspence = ({ videoId }: FromSectionProps) => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => revalidate.mutate({ id: videoId })}>
+                    <RotateCcwIcon className="size-4 mr-2" />
+                    Revalidate
+                  </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => remove.mutate({ id: videoId })}>
                     <TrashIcon className="size-4 mr-2" />
                     Delete

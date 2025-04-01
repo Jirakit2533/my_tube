@@ -21,7 +21,7 @@ const userInfoVariants = cva("flex items-center gap-1", {
   },
 });
 
-interface UserInfoProps extends VariantProps<typeof channelInfoVariants> {
+interface UserInfoProps extends VariantProps<typeof userInfoVariants> {
   name: string;
   className?: string;
 };
