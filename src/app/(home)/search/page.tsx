@@ -1,8 +1,8 @@
+import { DEFAULT_LIMIT } from "@/constants";
+
 import { HydrateClient, trpc } from "@/trpc/server";
 
 import { SearchView } from "@/modules/search/ui/views/search-view";
-
-import { DEFAULT_LIMIT } from "@/constants";
 
 export const dynamic = "force-dynamic";
 

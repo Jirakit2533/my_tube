@@ -125,6 +125,7 @@ export const videosRouter = createTRPCRouter({
       const PlaybackId = asset.playback_ids?.[0].id;
       const duration = asset.duration ? Math.round(asset.duration * 1000) : 0;
 
+      // TODO: Potentially find a way to revalidate trackId and trackStatus as well
 
       const [updatedVideo] = await db
         .update(videos)
@@ -134,6 +135,10 @@ export const videosRouter = createTRPCRouter({
           muxAssetId: asset.id,
           duration,
         })
+        .where(and(
+          eq(videos.id, input.id),
+          eq(videos.userId, userId)
+        ))
         .returning();
 
       return updatedVideo;
