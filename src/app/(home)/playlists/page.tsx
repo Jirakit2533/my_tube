@@ -3,6 +3,8 @@ import { DEFAULT_LIMIT } from "@/constants";
 
 import { PlaylistsView } from "@/modules/playlist/ui/views/playlists-view";
 
+export const dynamic = "force-dynamic";
+
 const Page = async () => {
   void trpc.playlists.getMany.prefetchInfinite({ limit: DEFAULT_LIMIT });
 
