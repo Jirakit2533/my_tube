@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/user-avatar";
 
 import { UserInfo } from "@/modules/users/ui/component/user-info";
-import { useSubscription } from "@/modules/subscription/hooks/use-subscription";
-import { SubscriptionButton } from "@/modules/subscription/ui/component/subscription-button";
+import { useSubscription } from "@/modules/subscriptions/hooks/use-subscription";
+import { SubscriptionButton } from "@/modules/subscriptions/ui/component/subscription-button";
 
 import { VideoGetOneOutput } from "../../types";
 

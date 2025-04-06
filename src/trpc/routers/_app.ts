@@ -7,7 +7,7 @@ import { playlistsRouter } from '@/modules/playlist/server/procedures';
 import { categoriesRouter } from '@/modules/categories/procedures';
 import { videoViewsRouter } from '@/modules/video-views/server/procedures';
 import { suggestionsRouter } from '@/modules/suggestions/server/procedures';
-import { subscriptionsRouter } from '@/modules/subscription/server/procedures';
+import { subscriptionsRouter } from '@/modules/subscriptions/server/procedures';
 import { videoReactionsRouter } from '@/modules/video-reactions/server/procedures';
 import { commentReactionsRouter } from '@/modules/comment-reactions/procedures';
 

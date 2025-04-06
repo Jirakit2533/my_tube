@@ -4,9 +4,10 @@ import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
 import { trpc } from "@/trpc/client";
+import { Separator } from "@/components/ui/separator";
 
-import { UserPageInfo } from "../component/user-page-info";
-import { UserPageBanner } from "../component/user-page-banner";
+import { UserPageInfo, UserPageInfoSkeleton } from "../component/user-page-info";
+import { UserPageBanner, UserPageBannerSkeleton } from "../component/user-page-banner";
 
 interface UserSectionProps {
   userId: string; 
@@ -14,7 +15,7 @@ interface UserSectionProps {
 
 export const UserSection = (props: UserSectionProps) => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<UserSectionSkeleton />}>
       <ErrorBoundary fallback={<div>Error</div>}>
         <UserSectionSuspense {...props} />
       </ErrorBoundary>
@@ -22,12 +23,23 @@ export const UserSection = (props: UserSectionProps) => {
   );
 };
 
+const UserSectionSkeleton = () => {
+  return (
+    <div className="flex flex-col">
+      <UserPageBannerSkeleton />
+      <UserPageInfoSkeleton />
+      <Separator />
+    </div>
+  )
+}
+
 const UserSectionSuspense = ({ userId }: UserSectionProps) => {
   const [user] = trpc.users.getOne.useSuspenseQuery({ id: userId });
   return (
     <div className="flex flex-col">
       <UserPageBanner user={user} />
       <UserPageInfo user={user} />
+      <Separator />
     </div>
   );
 };
