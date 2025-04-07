@@ -249,7 +249,7 @@ export const videoViews = pgTable("video_views", {
   }),
 ]);
 
-export const videoViewRelations = relations(videoViews, ({ one }) => ({
+export const videoViewRelations = relations(videoViews, ({ one, many }) => ({
   user: one(users, {
     fields: [videoViews.userId],
     references: [users.id],
@@ -258,6 +258,9 @@ export const videoViewRelations = relations(videoViews, ({ one }) => ({
     fields: [videoViews.videoId],
     references: [videos.id],
   }),
+  views: many(videoViews),
+  reactions: many(videoReactions),
+  comments: many(comments),
 }));
 
 export const videoViewSelectSchema = createSelectSchema(videoViews);

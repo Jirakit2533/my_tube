@@ -1,9 +1,9 @@
 import { z } from 'zod';
 import { toast } from 'sonner';
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 import { useUser, useClerk } from '@clerk/nextjs';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { zodResolver } from "@hookform/resolvers/zod";
 
 
 import { trpc } from '@/trpc/client';
@@ -49,16 +49,28 @@ export const CommentForm = ({
     }
   });
 
-  const form = useForm<z.infer<typeof commentInsertSchema>>({
-    resolver: zodResolver(commentInsertSchema.omit({ userId: true })),
+//  const form = useForm<z.infer<typeof commentInsertSchema>>({
+//     resolver: zodResolver(form.omit({ userId: true })),
+//     defaultValues: {
+//       videoId,
+//       parentId,
+//       value: "",
+//     },
+//   });
+
+  const schema = commentInsertSchema.omit({ userId: true });
+
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
     defaultValues: {
-      parentId: parentId,
-      videoId: videoId,
+      videoId,
+      parentId,
       value: "",
     },
   });
+  
 
-  const handleSubmit = (values: z.infer<typeof commentInsertSchema>) => {
+  const handleSubmit = (values: z.infer<typeof schema>) => {
     create.mutate(values);
   }
 
